@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Project 2</title>
+    <link rel="icon" href="data:," />
+    <style>
+      body { font-family: system-ui, sans-serif; margin: 2rem; }
+      .ok { color: #238636; }
+    </style>
+  </head>
+  <body>
+    <h1>Project 2</h1>
+    <div id="status">Loading…</div>
+    <script>
+      fetch('/api/status').then(r=>r.json()).then(j=>{
+        document.getElementById('status').innerHTML = `<span class="ok">${JSON.stringify(j)}</span>`
+      }).catch(e=>{document.getElementById('status').textContent = String(e)})
+    </script>
+  </body>
+  </html>
+
