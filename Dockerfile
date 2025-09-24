@@ -16,4 +16,7 @@ USER appuser
 ENV PORT=9090
 EXPOSE 9090
 
+# Healthcheck for consistency with project-1
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s CMD curl -fsS "http://127.0.0.1:${PORT:-9090}/healthz" || exit 1
+
 CMD ["node", "server.js"]
